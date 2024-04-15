@@ -1,0 +1,14 @@
+h1{
+    text-align:center;
+    color:darkgoldenrod;
+    font: size 1.5em;
+}
+p{
+    text-align:center;
+    color:blueviolet;
+    font-size:1.25em;
+}
+body{
+    text-align:center;
+    background-color:black;
+}

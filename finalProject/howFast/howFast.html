@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>How fast</title>
+        
+        
+            <link rel="stylesheet" type="text/css" href="colors.css">
+        <style>
+		#shape {
+                
+                width:50px;
+                height:100px;
+                background-color: blanchedalmond;
+                display:none;
+                position:relative;
+                border:2px solid blueviolet;
+                
+                }
+
+		</style>
+        
+         
+    
+    </head>
+    <body>
+        
+        <h1>Are you as quick as you think?</h1>
+        <p>Shapes will pop up in an infinite loop. Your job is to click them as fast as you can.<br>
+        Time in between clicks is recorded in the box below. Can YOU get under 0.2 seconds? <br>
+        Inspired by Aimlabs, a game for PC and Mobile players to test their aim and reaction time for a competitive edge.</p>
+        
+       
+        
+        <!--box with time-->
+        <p>Time in between:</p>
+        <input id="exec-time" type="text">
+
+        <!--literally the shape itself-->
+        <div id="shape"></div>
+    
+        <script type="text/javascript">
+		    var start = new Date().getTime();
+         function getRandomColor() {
+              var letters = '0123456789ABCDEF';
+              var color = '#';
+              for (var i = 0; i < 5; i++) {
+                color += letters[Math.floor(Math.random() * 14)];
+              }
+              return color;
+            }
+
+        
+        //shape shall appear at random cuh
+        function makeShapeAppear()
+            {
+                var top = Math.random() * 200;
+                var left = Math.random() * 200;
+                var right = Math.random() * 200;
+                var width = Math.random() * 200;
+                if(Math.random() > 1){
+                    
+                    document.getElementById("shape").style.borderRadius = "25%";
+                }
+                else{
+                    
+                    document.getElementById("shape").style.borderRadius= "0%";
+                }
+                document.getElementById("shape").style.backgroundColor= getRandomColor();
+                document.getElementById("shape").style.height = width + "px";
+                document.getElementById("shape").style.width= width + "px";
+                document.getElementById("shape").style.top =  top + "px";
+                document.getElementById("shape").style.left= left + "px";
+                document.getElementById("shape").style.right= right + "px";
+                document.getElementById("shape").style.display = "block";
+                start = new Date().getTime();
+            }
+            
+            function appearAfterDelay() {
+                
+                setTimeout(makeShapeAppear,Math.random() * 1000);
+            }
+        
+         appearAfterDelay();   
+         var end;
+        document.getElementById("shape").onclick = function() {
+            
+            end = new Date().getTime();
+            var time = (end - start)/1000;
+            document.getElementById("shape").style.display = "none";
+            
+            document.getElementById("exec-time").value = time +"sec";
+            appearAfterDelay();
+            
+        }
+		</script>
+    
+    </body>
+</html>
